@@ -1,0 +1,419 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --sidebar: #0f172a;
+  --surface: #111c30;
+  --border: #26344b;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --blue: #3b82f6;
+  --blue-light: #60a5fa;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+
+aside {
+  width: 245px;
+  padding: 28px 18px;
+  background: var(--sidebar);
+  border-right: 1px solid #202b40;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 750;
+  margin: 0 0 36px 8px;
+  letter-spacing: -0.7px;
+}
+
+.brand span {
+  color: var(--blue-light);
+}
+
+.nav-title {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  margin: 25px 10px 12px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #9caec5;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+.storage {
+  margin-top: 42px;
+  padding: 16px;
+  background: #172238;
+  border: 1px solid #273750;
+  border-radius: 12px;
+}
+
+.storage-heading {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 10px;
+  background: #334155;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress div {
+  height: 100%;
+  width: 0%;
+  background: var(--blue-light);
+}
+
+.storage p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Main content */
+
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 38px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.welcome h1 {
+  font-size: 27px;
+  letter-spacing: -0.7px;
+  margin-bottom: 8px;
+}
+
+.welcome p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Search and upload */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 430px;
+}
+
+.search input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--surface);
+  color: white;
+  font-size: 14px;
+}
+
+.search input:focus {
+  border-color: var(--blue-light);
+  box-shadow: 0 0 0 3px #3b82f626;
+}
+
+.search input::placeholder {
+  color: #64748b;
+}
+
+.upload-btn {
+  border: 0;
+  border-radius: 9px;
+  background: var(--blue);
+  color: white;
+  padding: 13px 19px;
+  font-weight: 650;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.upload-btn:hover {
+  background: #2563eb;
+}
+
+.upload-btn:active {
+  transform: scale(0.98);
+}
+
+/* Quick access */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.section-heading h2 {
+  font-size: 17px;
+}
+
+.section-heading span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.quick-card {
+  padding: 19px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  min-width: 0;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.quick-card:hover {
+  border-color: #3b82f680;
+  transform: translateY(-2px);
+}
+
+.folder-icon {
+  font-size: 27px;
+  margin-bottom: 16px;
+}
+
+.quick-card h3 {
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.quick-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Files list */
+
+.files-panel {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px 105px;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 20px;
+  border-bottom: 1px solid #202d42;
+  font-size: 13px;
+}
+
+.file-row:last-child {
+  border-bottom: 0;
+}
+
+.file-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.file-name strong {
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+.file-symbol {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty {
+  padding: 35px 15px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Responsive layout */
+
+@media (max-width: 1050px) {
+  main {
+    padding: 26px 22px;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .app {
+    display: block;
+  }
+
+  aside {
+    width: 100%;
+    padding: 18px 15px 12px;
+    border-right: 0;
+    border-bottom: 1px solid #202b40;
+  }
+
+  .brand {
+    margin: 0 0 15px 4px;
+  }
+
+  .nav-title,
+  .storage {
+    display: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  main {
+    padding: 25px 15px;
+  }
+
+  header {
+    margin-bottom: 27px;
+  }
+
+  .welcome h1 {
+    font-size: 23px;
+  }
+
+  .welcome p {
+    font-size: 12px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .search {
+    max-width: none;
+    flex-basis: 100%;
+  }
+
+  .upload-btn {
+    width: 100%;
+  }
+
+  .quick-grid {
+    gap: 10px;
+  }
+
+  .quick-card {
+    padding: 15px;
+  }
+
+  .file-row {
+    grid-template-columns: minmax(0, 1fr) 65px;
+    padding: 15px 12px;
+  }
+
+  .file-row > :nth-child(2) {
+    display: none;
+  }
+
+  .file-row > :last-child {
+    text-align: right;
+  }
+}
