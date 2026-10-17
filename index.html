@@ -6,377 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1120">
   <title>Osama Cloud</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: #0b1120;
-      color: #e5e7eb;
-      min-height: 100vh;
-    }
-
-    .app {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    aside {
-      width: 245px;
-      padding: 28px 18px;
-      background: #0f172a;
-      border-right: 1px solid #202b40;
-      flex-shrink: 0;
-    }
-
-    .brand {
-      font-size: 22px;
-      font-weight: 750;
-      margin: 0 0 36px 8px;
-      letter-spacing: -0.7px;
-    }
-
-    .brand span {
-      color: #60a5fa;
-    }
-
-    .nav-title {
-      color: #64748b;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      margin: 25px 10px 12px;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      margin-bottom: 5px;
-      color: #9caec5;
-      border-radius: 9px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .nav-item.active {
-      background: #1e3a5f;
-      color: #93c5fd;
-    }
-
-    .storage {
-      margin-top: 42px;
-      padding: 16px;
-      background: #172238;
-      border: 1px solid #273750;
-      border-radius: 12px;
-    }
-
-    .storage-heading {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .progress {
-      height: 6px;
-      border-radius: 10px;
-      background: #334155;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-
-    .progress div {
-      height: 100%;
-      width: 0%;
-      background: #60a5fa;
-    }
-
-    .storage p {
-      font-size: 12px;
-      color: #94a3b8;
-      line-height: 1.6;
-    }
-
-    main {
-      flex: 1;
-      min-width: 0;
-      padding: 30px 38px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 38px;
-    }
-
-    .welcome h1 {
-      font-size: 27px;
-      letter-spacing: -0.7px;
-      margin-bottom: 8px;
-    }
-
-    .welcome p {
-      color: #94a3b8;
-      font-size: 14px;
-    }
-
-    .avatar {
-      display: grid;
-      place-items: center;
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      background: #1d4ed8;
-      color: white;
-      font-weight: 700;
-    }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .search {
-      flex: 1;
-      min-width: 180px;
-      max-width: 430px;
-    }
-
-    .search input {
-      width: 100%;
-      padding: 13px 15px;
-      border: 1px solid #273750;
-      border-radius: 10px;
-      outline: none;
-      background: #111c30;
-      color: white;
-      font-size: 14px;
-    }
-
-    .search input:focus {
-      border-color: #60a5fa;
-    }
-
-    .upload-btn {
-      border: 0;
-      border-radius: 9px;
-      background: #3b82f6;
-      color: white;
-      padding: 13px 19px;
-      font-weight: 650;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .upload-btn:hover {
-      background: #2563eb;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 17px;
-    }
-
-    .section-heading h2 {
-      font-size: 17px;
-    }
-
-    .section-heading span {
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 15px;
-      margin-bottom: 35px;
-    }
-
-    .quick-card {
-      padding: 19px;
-      border: 1px solid #26344b;
-      border-radius: 13px;
-      background: #111c30;
-      min-width: 0;
-    }
-
-    .folder-icon {
-      font-size: 27px;
-      margin-bottom: 16px;
-    }
-
-    .quick-card h3 {
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
-    .quick-card p {
-      color: #94a3b8;
-      font-size: 12px;
-    }
-
-    .files-panel {
-      overflow: hidden;
-      border: 1px solid #26344b;
-      border-radius: 13px;
-      background: #111c30;
-    }
-
-    .file-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 120px 105px;
-      align-items: center;
-      gap: 12px;
-      padding: 17px 20px;
-      border-bottom: 1px solid #202d42;
-      font-size: 13px;
-    }
-
-    .file-row:last-child {
-      border-bottom: 0;
-    }
-
-    .file-name {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .file-name strong {
-      font-weight: 550;
-      overflow-wrap: anywhere;
-    }
-
-    .file-symbol {
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-
-    .muted {
-      color: #94a3b8;
-      font-size: 12px;
-    }
-
-    .empty {
-      padding: 35px 15px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
-    }
-
-    @media (max-width: 1050px) {
-      main {
-        padding: 26px 22px;
-      }
-
-      .quick-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      .app {
-        display: block;
-      }
-
-      aside {
-        width: 100%;
-        padding: 18px 15px 12px;
-        border-right: 0;
-        border-bottom: 1px solid #202b40;
-      }
-
-      .brand {
-        margin: 0 0 15px 4px;
-      }
-
-      .nav-title,
-      .storage {
-        display: none;
-      }
-
-      .nav-list {
-        display: flex;
-        gap: 7px;
-        overflow-x: auto;
-      }
-
-      .nav-item {
-        white-space: nowrap;
-        padding: 10px;
-        margin: 0;
-        font-size: 12px;
-      }
-
-      main {
-        padding: 25px 15px;
-      }
-
-      header {
-        margin-bottom: 27px;
-      }
-
-      .welcome h1 {
-        font-size: 23px;
-      }
-
-      .welcome p {
-        font-size: 12px;
-      }
-
-      .toolbar {
-        align-items: stretch;
-      }
-
-      .search {
-        max-width: none;
-        flex-basis: 100%;
-      }
-
-      .upload-btn {
-        width: 100%;
-      }
-
-      .quick-grid {
-        gap: 10px;
-      }
-
-      .quick-card {
-        padding: 15px;
-      }
-
-      .file-row {
-        grid-template-columns: minmax(0, 1fr) 65px;
-        padding: 15px 12px;
-      }
-
-      .file-row > :nth-child(2) {
-        display: none;
-      }
-
-      .file-row > :last-child {
-        text-align: right;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -384,19 +15,18 @@
     <aside>
       <div class="brand">Osama <span>Cloud.</span></div>
 
-      <div class="nav-list">
+      <nav class="nav-list">
         <a class="nav-item active" href="#files">▦ My Files</a>
         <a class="nav-item" href="#recent">◷ Recent</a>
         <a class="nav-item" href="#starred">☆ Starred</a>
         <a class="nav-item" href="#trash">⌫ Trash</a>
-      </div>
+      </nav>
 
       <div class="nav-title">STORAGE</div>
-
       <div class="storage">
         <div class="storage-heading">☁ Cloud Storage</div>
         <div class="progress"><div></div></div>
-        <p>Storage details will appear after connecting your cloud account.</p>
+        <p>Connect your cloud account to view storage.</p>
       </div>
     </aside>
 
@@ -411,18 +41,11 @@
 
       <section class="toolbar">
         <div class="search">
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="Search your files..."
-            aria-label="Search files"
-          >
+          <input id="searchInput" type="search"
+            placeholder="Search your files..." aria-label="Search files">
         </div>
 
-        <button class="upload-btn" id="uploadButton">
-          + Upload files
-        </button>
-
+        <button class="upload-btn" id="uploadButton">+ Upload files</button>
         <input id="fileInput" type="file" multiple hidden>
       </section>
 
@@ -438,19 +61,16 @@
             <h3>Documents</h3>
             <p>Your documents</p>
           </div>
-
           <div class="quick-card">
             <div class="folder-icon">🖼️</div>
             <h3>Images</h3>
             <p>Your photos</p>
           </div>
-
           <div class="quick-card">
             <div class="folder-icon">🎬</div>
             <h3>Videos</h3>
             <p>Your videos</p>
           </div>
-
           <div class="quick-card">
             <div class="folder-icon">📦</div>
             <h3>Archives</h3>
@@ -466,111 +86,10 @@
         </div>
 
         <div class="files-panel" id="fileList">
-          <div class="empty">
-            Your cloud is ready for your files.<br>
-            Real storage will be enabled in the next steps.
-          </div>
+          <div class="empty">Your cloud is ready for your files.</div>
         </div>
       </section>
     </main>
   </div>
-
-  <script>
-    const uploadButton = document.getElementById("uploadButton");
-    const fileInput = document.getElementById("fileInput");
-    const fileList = document.getElementById("fileList");
-    const searchInput = document.getElementById("searchInput");
-    const fileCount = document.getElementById("fileCount");
-
-    let selectedFiles = [];
-
-    uploadButton.addEventListener("click", () => {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener("change", () => {
-      const newFiles = Array.from(fileInput.files);
-
-      selectedFiles = [...selectedFiles, ...newFiles];
-      renderFiles();
-      fileInput.value = "";
-    });
-
-    searchInput.addEventListener("input", renderFiles);
-
-    function formatSize(bytes) {
-      if (bytes < 1024) return bytes + " B";
-      if (bytes < 1024 * 1024) {
-        return (bytes / 1024).toFixed(1) + " KB";
-      }
-      if (bytes < 1024 * 1024 * 1024) {
-        return (bytes / (1024 * 1024)).toFixed(1) + " MB";
-      }
-      return (bytes / (1024 * 1024 * 1024)).toFixed(2) + " GB";
-    }
-
-    function getFileIcon(file) {
-      if (file.type.startsWith("image/")) return "🖼️";
-      if (file.type.startsWith("video/")) return "🎬";
-      if (file.type.startsWith("audio/")) return "🎵";
-      if (file.type.includes("pdf")) return "📕";
-      return "📄";
-    }
-
-    function renderFiles() {
-      const query = searchInput.value.toLowerCase().trim();
-
-      const visibleFiles = selectedFiles.filter(file =>
-        file.name.toLowerCase().includes(query)
-      );
-
-      fileCount.textContent =
-        visibleFiles.length + (visibleFiles.length === 1 ? " file" : " files");
-
-      fileList.replaceChildren();
-
-      if (visibleFiles.length === 0) {
-        const empty = document.createElement("div");
-        empty.className = "empty";
-        empty.textContent = query
-          ? "No matching files found."
-          : "No files selected yet.";
-        fileList.appendChild(empty);
-        return;
-      }
-
-      visibleFiles.forEach(file => {
-        const row = document.createElement("div");
-        row.className = "file-row";
-
-        const name = document.createElement("div");
-        name.className = "file-name";
-
-        const icon = document.createElement("span");
-        icon.className = "file-symbol";
-        icon.textContent = getFileIcon(file);
-
-        const filename = document.createElement("strong");
-        filename.textContent = file.name;
-
-        name.append(icon, filename);
-
-        const size = document.createElement("span");
-        size.className = "muted";
-        size.textContent = formatSize(file.size);
-
-        const type = document.createElement("span");
-        type.className = "muted";
-        type.textContent = file.type.startsWith("image/")
-          ? "Image"
-          : file.type.startsWith("video/")
-            ? "Video"
-            : "File";
-
-        row.append(name, size, type);
-        fileList.appendChild(row);
-      });
-    }
-  </script>
 </body>
 </html>
